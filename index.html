@@ -7,7 +7,7 @@
     <style>
       /* TODO */
     </style>
-    <script src="https://iclient.test.tyro.com/iclient-with-ui-v1.js" type="text/javascript"></script></script>
+    <script src="https://iclient.test.tyro.com/iclient.js" type="text/javascript"></script></script>
     <script>
     var apiKey = "Test API Key"; // API Key not validated test environments
         var posProductInfo = {
@@ -37,6 +37,23 @@
       };
       var receiptCallbackImpl = function (receipt) {
     console.log("Merchant Receipt = " + JSON.stringify(receipt));
+};
+
+var statusMessageCallbackImpl = function (message) {
+    console.log("Status is " + JSON.stringify(message));
+  //  $("#statusMessage").text(message);
+};
+var questionCallbackImpl = function (question, answerCallback) {
+    console.log("Question is " + JSON.stringify(question));
+  //  $("#statusMessage").text(question.text);
+   // $.each(question.options, function(index, option) {
+    //    console.log("Option " + index + " = " + option);
+  //      $("#btns").append("<button type=\"button\" id=\"btn" + index + "\" class=\"btn btn-sm btn-primary\">" + option + "</button>&nbsp;");
+   //     $("#btn" + index).click(function(){
+            $("#btns").html("");
+        //    answerCallback(option);
+      //  });
+   // });
 };
       </script>
   </head>
