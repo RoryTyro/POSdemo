@@ -53,7 +53,7 @@
 
 var statusMessageCallbackImpl = function (message) {
     console.log("Status is " + JSON.stringify(message));
-    $("#statusMessage").text(message);
+    $("#statusMessage").data(message);
 };
 var questionCallbackImpl = function (question, answerCallback) {
     console.log("Question is " + JSON.stringify(question));
@@ -117,7 +117,8 @@ var questionCallbackImpl = function (question, answerCallback) {
                 <div class="app-button left" data-back>Back</div>
         </div>
         <div class="app-content"></div>
-        <img class="app-content center-fit" src="source.gif"></img>
+        <div class="status"></div>
+        <img class="center-fit" src="source.gif"></img>
       </div>
     <script src="zepto.js"></script>
     <script src="app.min.js"></script>
