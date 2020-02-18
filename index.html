@@ -23,6 +23,8 @@
               cashout: "0",
               integratedReceipt: true
           }, {
+            statusMessageCallback: statusMessageCallbackImpl,
+        questionCallback: questionCallbackImpl,
               receiptCallback: receiptCallbackImpl,
               transactionCompleteCallback: transactionCompleteCallbackImpl
           });
