@@ -43,19 +43,19 @@
 
 var statusMessageCallbackImpl = function (message) {
     console.log("Status is " + JSON.stringify(message));
-  //  $("#statusMessage").text(message);
+    $("#statusMessage").text(message);
 };
 var questionCallbackImpl = function (question, answerCallback) {
     console.log("Question is " + JSON.stringify(question));
-  //  $("#statusMessage").text(question.text);
-   // $.each(question.options, function(index, option) {
-    //    console.log("Option " + index + " = " + option);
-  //      $("#btns").append("<button type=\"button\" id=\"btn" + index + "\" class=\"btn btn-sm btn-primary\">" + option + "</button>&nbsp;");
-   //     $("#btn" + index).click(function(){
-         //   $("#btns").html("");
+    $("#statusMessage").text(question.text);
+    $.each(question.options, function(index, option) {
+        console.log("Option " + index + " = " + option);
+        $("#btns").append("<button type=\"button\" id=\"btn" + index + "\" class=\"btn btn-sm btn-primary\">" + option + "</button>&nbsp;");
+        $("#btn" + index).click(function(){
+            $("#btns").html("");
          answerCallback("0");
-      //  });
-   // });
+       });
+    });
 };
       </script>
   </head>
@@ -71,9 +71,11 @@ var questionCallbackImpl = function (question, answerCallback) {
       </div>
       <div class="app-content">
         <div class="app-section">
-          <div class="app-button" data-target="page2">Go to Page 2</div>
-          <div class="app-button">My button</div>
+          <img src="logo-banner.png"> </img>
           <div class="app-button red" data-clickable-class="active" style="-webkit-tap-highlight-color: rgba(255, 255, 255, 0);" onclick="doPurchase()">Button 1</div>
+        <div class="app-section">
+          <div class="app-content" id="status"></div>
+        </div>
         </div>
       </div>
     </div>
@@ -91,6 +93,9 @@ var questionCallbackImpl = function (question, answerCallback) {
     <script src="zepto.js"></script>
     <script src="app.min.js"></script>
     <script>
+
+
+
       App.controller('home', function (page) {
         // put stuff here
       });
