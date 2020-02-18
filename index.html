@@ -24,7 +24,7 @@
               integratedReceipt: true
           }, {
             statusMessageCallback: statusMessageCallbackImpl,
-        questionCallback: questionCallbackImpl,
+            questionCallback: questionCallbackImpl,
               receiptCallback: receiptCallbackImpl,
               transactionCompleteCallback: transactionCompleteCallbackImpl
           });
@@ -52,8 +52,8 @@ var questionCallbackImpl = function (question, answerCallback) {
     //    console.log("Option " + index + " = " + option);
   //      $("#btns").append("<button type=\"button\" id=\"btn" + index + "\" class=\"btn btn-sm btn-primary\">" + option + "</button>&nbsp;");
    //     $("#btn" + index).click(function(){
-            $("#btns").html("");
-        //    answerCallback(option);
+         //   $("#btns").html("");
+         answerCallback("0");
       //  });
    // });
 };
