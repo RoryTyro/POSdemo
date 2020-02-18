@@ -18,6 +18,7 @@
         };
         var iclient = new TYRO.IClient(apiKey, posProductInfo);
         function doPurchase() {
+          App.load('processing');
           iclient.initiatePurchase({
               amount: "1000",
               cashout: "0",
@@ -32,6 +33,10 @@
       
       var transactionCompleteCallbackImpl = function (response) {
           console.log("Response = " + JSON.stringify(response));
+
+          App.load('home');
+
+
           if (response.customerReceipt) {
               console.log("Customer Receipt = " + JSON.stringify(response.customerReceipt));
             
@@ -47,15 +52,15 @@ var statusMessageCallbackImpl = function (message) {
 };
 var questionCallbackImpl = function (question, answerCallback) {
     console.log("Question is " + JSON.stringify(question));
-    $("#statusMessage").text(question.text);
-    $.each(question.options, function(index, option) {
-        console.log("Option " + index + " = " + option);
-        $("#btns").append("<button type=\"button\" id=\"btn" + index + "\" class=\"btn btn-sm btn-primary\">" + option + "</button>&nbsp;");
-        $("#btn" + index).click(function(){
-            $("#btns").html("");
-         answerCallback("0");
-       });
-    });
+  //  $("#statusMessage").text(question.text);
+ //   $.each(question.options, function(index, option) {
+     //   console.log("Option " + index + " = " + option);
+  //      $("#btns").append("<button type=\"button\" id=\"btn" + index + "\" class=\"btn btn-sm btn-primary\">" + option + "</button>&nbsp;");
+     //   $("#btn" + index).click(function(){
+       //     $("#btns").html("");
+     //    answerCallback("0");
+     //  });
+   // });
 };
       </script>
   </head>
@@ -71,7 +76,19 @@ var questionCallbackImpl = function (question, answerCallback) {
       </div>
       <div class="app-content">
         <div class="app-section">
+          
           <img src="logo-banner.png"> </img>
+        </div>
+        <div class="app-section"> 
+          <div class="app-content">Baby Jogger Summit X3 Pram Black Gray</div>
+          <img src="pram.jpeg"> </img>
+        </div>
+        <div class="app-section"> 
+            <div class="app-content">Bugaboo Donkey2 Duo Pram</div>
+            <img src="double-pram.jpeg"> </img>
+          </div>
+          <div class="app-section">
+        </div>
           <div class="app-button red" data-clickable-class="active" style="-webkit-tap-highlight-color: rgba(255, 255, 255, 0);" onclick="doPurchase()">Button 1</div>
         <div class="app-section">
           <div class="app-content" id="status"></div>
@@ -90,6 +107,11 @@ var questionCallbackImpl = function (question, answerCallback) {
       </div>
     </div>
 
+    <div class="app-page" data-page="processing">
+        <div class="app-topbar"></div>
+        <div class="app-content"></div>
+        <img src="source.gif"></img>
+      </div>
     <script src="zepto.js"></script>
     <script src="app.min.js"></script>
     <script>
