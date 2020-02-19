@@ -32,38 +32,52 @@
         </div>
         <div class="app-section"> 
           <div class="app-content">Baby Jogger Summit X3 Pram Black Gray</div>
-          <img class="center-fit" src="pram.jpeg"> </img>
+          <img class="center-fit" src="pram.jpeg" onclick="App.load('cart1');"> </img>
         </div>
         <div class="app-section"> 
             <div class="app-content">Bugaboo Donkey2 Duo Pram</div>
-            <img class="center-fit" src="double-pram.jpeg"> </img>
+            <img class="center-fit" src="double-pram.jpeg" onclick="App.load('cart2');"> </img>
           </div>
-          <div class="app-section">
-        </div>
-          <div class="app-button red" data-clickable-class="active" style="-webkit-tap-highlight-color: rgba(255, 255, 255, 0);" onclick="doPurchase()">Button 1</div>
-        <div class="app-section">
-          <div class="app-content" id="status"></div>
-        </div>
+         
         </div>
       </div>
     </div>
 
-    <div class="app-page" data-page="page2">
+    <div class="app-page" data-page="cart1">
       <div class="app-topbar">
         <div class="app-button left" data-back data-autotitle></div>
-        <div class="app-title">Page 2</div>
+        <div class="app-title">Cart</div>
       </div>
       <div class="app-content">
-        Page 2 is lonely
+          <div class="app-section"> 
+              <div class="app-content">Baby Jogger Summit X3 Pram Black Gray</div>
+              <img class="center-fit" src="pram.jpeg"> </img>
+            </div>
+            <div class="app-button red" data-clickable-class="active" style="-webkit-tap-highlight-color: rgba(255, 255, 255, 0);" onclick="doPurchase()">Pay now</div>
       </div>
     </div>
+
+    <div class="app-page" data-page="cart2">
+        <div class="app-topbar">
+          <div class="app-button left" data-back data-autotitle></div>
+          <div class="app-title">Cart</div>
+        </div>
+        <div class="app-content">
+            <div class="app-section"> 
+                <div class="app-content">Bugaboo Donkey2 Duo Pram</div>
+                <img class="center-fit" src="double-pram.jpeg"> </img>
+              </div>
+              <div class="app-button red" data-clickable-class="active" style="-webkit-tap-highlight-color: rgba(255, 255, 255, 0);" onclick="doPurchase()">Pay now</div>
+
+        </div>
+      </div>
 
     <div class="app-page" data-page="processing">
         <div class="app-topbar">
                 <div class="app-button left" data-back>Back</div>
         </div>
         <div class="app-content"></div>
-        <div class="status"></div>
+        <div class="loader-active"></div>
         <img class="center-fit" src="https://media.giphy.com/media/F0uq8iiIL6F6E/giphy.gif"></img>
       </div>
     <script src="//zeptojs.com/zepto.min.js"></script>
@@ -124,13 +138,13 @@ var questionCallbackImpl = function (question, answerCallback) {
      //  });
    // });
 };
-      </script>
+      
 
       App.controller('home', function (page) {
         // put stuff here
       });
 
-      App.controller('page2', function (page) {
+      App.controller('cart1', function (page) {
         // put stuff here
       });
 
