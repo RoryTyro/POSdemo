@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="app.min.css">
+    <style>
+      /* TODO */
+    </style>
+    <script src="https://iclient.test.tyro.com/iclient-v1.js" type="text/javascript"></script></script>
+    <script>
+    var apiKey = "Test API Key"; // API Key not validated test environments
+        var posProductInfo = {
+            posProductVendor: "RoryPos",
+            posProductName: "Baby Bunting Demo",
+            posProductVersion: "1.0.0",
+            siteReference: ""
+        };
+        var iclient = new TYRO.IClient(apiKey, posProductInfo);
+        function doPurchase() {
+          iclient.initiatePurchase({
+              amount: "1000",
+              cashout: "0",
+              integratedReceipt: true
+          }, {
+              receiptCallback: receiptCallbackImpl,
+              transactionCompleteCallback: transactionCompleteCallbackImpl
+          });
+      }
+      
+      var transactionCompleteCallbackImpl = function (response) {
+          console.log("Response = " + JSON.stringify(response));
+          if (response.customerReceipt) {
+              console.log("Customer Receipt = " + JSON.stringify(response.customerReceipt));
+            
+          }
+      };
+      var receiptCallbackImpl = function (receipt) {
+    console.log("Merchant Receipt = " + JSON.stringify(receipt));
+};
+
+var statusMessageCallbackImpl = function (message) {
+    console.log("Status is " + JSON.stringify(message));
+  //  $("#statusMessage").text(message);
+};
+var questionCallbackImpl = function (question, answerCallback) {
+    console.log("Question is " + JSON.stringify(question));
+  //  $("#statusMessage").text(question.text);
+   // $.each(question.options, function(index, option) {
+    //    console.log("Option " + index + " = " + option);
+  //      $("#btns").append("<button type=\"button\" id=\"btn" + index + "\" class=\"btn btn-sm btn-primary\">" + option + "</button>&nbsp;");
+   //     $("#btn" + index).click(function(){
+            $("#btns").html("");
+        //    answerCallback(option);
+      //  });
+   // });
+};
+      </script>
+  </head>
+
+  <body>
+    <div class="app-page" data-page="home">
+      <div class="app-topbar">
+          <div class="app-topbar">
+              <div class="app-button left" data-back>Back</div>
+              <div class="app-title">POS Demo</div>
+              <div class="app-button right">Forward</div>
+            </div>
+      </div>
+      <div class="app-content">
+        <div class="app-section">
+          <div class="app-button" data-target="page2">Go to Page 2</div>
+          <div class="app-button">My button</div>
+          <div class="app-button red" data-clickable-class="active" style="-webkit-tap-highlight-color: rgba(255, 255, 255, 0);" onclick="doPurchase()">Button 1</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page" data-page="page2">
+      <div class="app-topbar">
+        <div class="app-button left" data-back data-autotitle></div>
+        <div class="app-title">Page 2</div>
+      </div>
+      <div class="app-content">
+        Page 2 is lonely
+      </div>
+    </div>
+
+    <script src="zepto.js"></script>
+    <script src="app.min.js"></script>
+    <script>
+      App.controller('home', function (page) {
+        // put stuff here
+      });
+
+      App.controller('page2', function (page) {
+        // put stuff here
+      });
+
+      try {
+        App.restore();
+      } catch (err) {
+        App.load('home');
+      }
+    </script>
+  </body>
+</html>
